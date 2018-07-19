@@ -1,6 +1,5 @@
 const THREE = require('three')
 const OBJLoader = require('./OBJLoader')
-const project = require('../../project.json')
 
 const lerp = (v0, v1, t) => {
 	return (1 - t) * v0 + t * v1
@@ -12,8 +11,8 @@ class Models {
     this.root = new THREE.Group()
     this.group = new THREE.Group()
     this.root.add(this.group)
-    
-    paths = [
+    console.log(__dirname)
+    var paths = [
       'teapot.obj',
       'knot 1-3.obj',
       'knot 1-6.obj',
@@ -36,7 +35,7 @@ class Models {
     
     var loader = new THREE.OBJLoader();
     for(var i = 0; i< paths.length; i++){
-      loader.load(project.project.filePath.substr(0, project.project.filePath.lastIndexOf('\\')) + "\\sketches\\models\\models\\"+paths[i], (o)=>{
+      loader.load((__dirname)+"\\models\\"+paths[i], (o)=>{
         o.material = this.material;
         //this.meshes.push(o);
         this.meshes.push(new THREE.Mesh(o.children[0].geometry, this.basicMat));
@@ -47,7 +46,9 @@ class Models {
   }
 
   update (params, time, frameDiff, allParams) {
-		
+    this.group.position.x = params.posX
+    this.group.position.y = params.posY
+    this.group.position.z = params.posZ
     this.group.rotation.x = params.rotX
     this.group.rotation.y = params.rotY
     this.group.rotation.z = params.rotZ

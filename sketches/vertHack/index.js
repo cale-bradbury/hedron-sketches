@@ -1,7 +1,7 @@
 const THREE = require('three')
-const project = require('../../project.json')
 const glsl = require('glslify')
 const vert = glsl.file('./vertex.glsl')
+const frag = glsl.file('./frag.glsl')
 
 const lerp = (v0, v1, t) => {
 	return (1 - t) * v0 + t * v1
@@ -44,7 +44,8 @@ class VertHack {
 		for(var i = 0; i<obj.children.length; i++){
 			if(obj.children[i].material !=null){
 				obj.children[i].material = new THREE.ShaderMaterial({
-					vertexShader:vert
+					vertexShader:vert,
+                    fragmentShader:frag
 				})
 				obj.children[i].material.side =THREE.DoubleSide;
               this.materials.push(obj.children[i].material);
