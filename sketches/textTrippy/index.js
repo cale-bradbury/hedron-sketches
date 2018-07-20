@@ -93,7 +93,9 @@ class Text {
         transparent: true,
         opacity: .7
       });
-      this.names.push(new THREE.Mesh(this.geometry, material));
+      var m = new THREE.Mesh(this.geometry, material);
+      m.dontHack = true;
+      this.names.push(m);
       this.group.add(this.names[j]);
     }
 

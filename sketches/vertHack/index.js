@@ -51,7 +51,7 @@ class VertHack {
 		if(obj.children==null)
 			return;
 		for(var i = 0; i<obj.children.length; i++){
-			if(obj.children[i].material !=null){
+			if(obj.children[i].material !=null && !obj.children[i].dontHack){
 				obj.children[i].material = new THREE.ShaderMaterial({
 					vertexShader:vert,
                     fragmentShader:frag
