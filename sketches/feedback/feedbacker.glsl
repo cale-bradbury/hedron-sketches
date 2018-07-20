@@ -11,6 +11,8 @@ uniform vec4 angle; //xy - min/max z-freq w-phase
 
 uniform int blend; 
 uniform bool debug;
+uniform bool rgbSplit;
+uniform vec4 spread;
 
 
 vec4 hueShift(vec4 color, float hueAdjust){
@@ -89,57 +91,106 @@ vec3 saturation(vec3 s, vec3 d)
 }
 
 void main(){
-	 vec2 u =local;
-	 vec3 new = texture2D(tex,u).rgb;
+   vec2 u =local;
+   vec3 new = texture2D(tex,u).rgb;
     u-=center.xy;
     u.y/= hsb.w;
     float d = length(u);
     float a = atan(u.x,u.y);
     float f = abs((a/3.1416))+center.w;
     f = abs(mod((f)*center.z, 2.)-1.);
-    
-    vec3 m = vec3(texture2D(mic,vec2(f*.2+.01, .5)).r,texture2D(mic,vec2(f*.2+.21, .5)).r,texture2D(mic,vec2(f*.2+.41, .5)).r);    
+    float dd;
+    float aa;
+    vec3 m;
+    if(rgbSplit){
+       m = vec3(texture2D(mic,vec2(f*.2+.01, .5)).r,texture2D(mic,vec2(f*.2+.21, .5)).r,texture2D(mic,vec2(f*.2+.41, .5)).r);    
+    }else{
+      m = texture2D(mic,vec2(f*.6, .5)).rgb;
+      vec2 tuv = u;
+      u = tuv + (spread.xy);
+      aa = atan(u.x,u.y);
+      f = abs((aa/3.1416))+center.w;
+      f = abs(mod((f)*center.z, 2.)-1.);
+      m += texture2D(mic,vec2(f*.6, .5)).rgb;
+      u = tuv - (spread.xy);
+      aa = atan(u.x,u.y);
+      f = abs((aa/3.1416))+center.w;
+      f = abs(mod((f)*center.z, 2.)-1.);
+      m += texture2D(mic,vec2(f*.6, .5)).rgb;
+      u = tuv + (spread.yx);
+      aa = atan(u.x,u.y);
+      f = abs((aa/3.1416))+center.w;
+      f = abs(mod((f)*center.z, 2.)-1.);
+      m += texture2D(mic,vec2(f*.6, .5)).rgb;
+      u = tuv - spread.x;
+      aa = atan(u.x,u.y);
+      f = abs((aa/3.1416))+center.w;
+      f = abs(mod((f)*center.z, 2.)-1.);
+      m += texture2D(mic,vec2(f*.6, .5)).rgb;
+     m*=.2;
+    }
     
     if(debug){
       gl_FragColor = vec4(m, 1.0);
       return;
     }
-    float dd;
-    float aa;
     
-    dd = d-d* mix(shift.x, shift.y, m.r);
-    aa = a+ mix(angle.x, angle.y, cos(dd*angle.z+angle.w)*.5+.5);    
-    u.y = cos(aa);
-    u.x = sin(aa);
-    u*=dd;
+    vec3 old;
     
-    u.y*= hsb.w;
-    u+=center.xy;
-    //u = abs(mod(u+1., 2.)-1.);
-    vec3 old = texture2D(last,u).rgb;
+    if(rgbSplit){
     
-    dd = d-d* mix(shift.x, shift.y, m.g);
-    aa = a+ mix(angle.x, angle.y, cos(dd*angle.z+angle.w)*.5+.5);    
-    u.y = cos(aa);
-    u.x = sin(aa);
-    u*=dd;
+      dd = d-d* mix(shift.x, shift.y, m.r);
+      aa = a+ mix(angle.x, angle.y, cos(dd*angle.z+angle.w)*.5+.5);    
+      u.y = cos(aa);
+      u.x = sin(aa);
+      u*=dd;
+
+      u.y*= hsb.w;;
+      u+=u*spread.zw;
+      u+=center.xy;
+      //u = abs(mod(u+1., 2.)-1.);
+      old = texture2D(last,u).rgb;
+
+      dd = d-d* mix(shift.x, shift.y, m.g);
+      aa = a+ mix(angle.x, angle.y, cos(dd*angle.z+angle.w)*.5+.5);    
+      u.y = cos(aa);
+      u.x = sin(aa);
+      u*=dd;
+
+      u.y*= hsb.w;;
+      u+=u*spread.zw;
+      u+=center.xy;
+      //u = abs(mod(u+1., 2.)-1.);
+      old.g = texture2D(last,u).g;
+
+      dd = d-d* mix(shift.x, shift.y, m.b);
+      aa = a+ mix(angle.x, angle.y, cos(dd*angle.z+angle.w)*.5+.5);    
+      u.y = cos(aa);
+      u.x = sin(aa);
+      u*=dd;
+
+      u.y*= hsb.w;;
+      u+=u*spread.zw;
+      u+=center.xy;
+      //u = abs(mod(u+1., 2.)-1.);
+      old.b = texture2D(last,u).b;
     
-    u.y*= hsb.w;
-    u+=center.xy;
-    //u = abs(mod(u+1., 2.)-1.);
-    old.g = texture2D(last,u).g;
+    }else{
     
-    dd = d-d* mix(shift.x, shift.y, m.b);
-    aa = a+ mix(angle.x, angle.y, cos(dd*angle.z+angle.w)*.5+.5);    
-    u.y = cos(aa);
-    u.x = sin(aa);
-    u*=dd;
+      dd = d-d* mix(shift.x, shift.y, m.r);
+      aa = a+ mix(angle.x, angle.y, cos(dd*angle.z+angle.w)*.5+.5);    
+      u.y = cos(aa);
+      u.x = sin(aa);
+      u*=dd;
+
+      u.y*= hsb.w;
+      u+=u*spread.zw*m.r;
+      u+=center.xy;
+      u = mod(u, 1.);//abs(mod(u+1., 2.)-1.);
+      
+      old = texture2D(last,u).rgb;
     
-    u.y*= hsb.w;
-    u+=center.xy;
-    //u = abs(mod(u+1., 2.)-1.);
-    old.b = texture2D(last,u).b;
-    
+    }
     
     old = rgb2hsv(old);
     old.rgb+=hsb.xyz;
@@ -167,6 +218,5 @@ void main(){
     }else if (blend==9){          //saturation
       new = mix(new, saturation(new, old), fade);
     }
-    
     gl_FragColor = vec4(new, 1.0);
 } 

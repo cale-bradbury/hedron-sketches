@@ -13,7 +13,6 @@ class Models {
     this.root.add(this.group)
     console.log(__dirname)
     var paths = [
-      'teapot.obj',
       'knot 1-3.obj',
       'knot 1-6.obj',
       'knot 2-3.obj',
@@ -30,7 +29,7 @@ class Models {
         shading: THREE.SmoothShading
       }
     )
-    this.meshes.push(new THREE.Mesh(new THREE.BoxGeometry(1), this.basicMat));
+    this.meshes.push(new THREE.Mesh(new THREE.TorusGeometry(.5, .02, 16, 64), this.basicMat));
     this.group.add(this.meshes[0]);
     
     var loader = new THREE.OBJLoader();
@@ -38,7 +37,10 @@ class Models {
       loader.load((__dirname)+"\\models\\"+paths[i], (o)=>{
         o.material = this.material;
         //this.meshes.push(o);
-        this.meshes.push(new THREE.Mesh(o.children[0].geometry, this.basicMat));
+        
+        this.group.remove(this.meshes[0]);
+        this.meshes.unshift(new THREE.Mesh(o.children[0].geometry, this.basicMat));
+        this.group.add(this.meshes[0]);
       });
     }
     

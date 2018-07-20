@@ -49,15 +49,15 @@ module.exports = {
       key: 'xShift',
       title: "min distance shift",
       defaultValue: .5,
-      min: -1,
-      max: 1
+      min: -.1,
+      max: .1
     },
     {
       key: 'yShift',
       title: "max distance shift",
       defaultValue: .5,
-      min: -1,
-      max: 1
+      min: -.1,
+      max: .1
     },
     {
       key: 'anglePhase',
@@ -95,7 +95,25 @@ module.exports = {
       title: 'mic angle off',
       defaultValue: .5,
       min: 0,
-      max: 2
+      max: 1
+    },
+    {
+      key: 'micSpread',
+      defaultValue: .5,
+      min: 0,
+      max: .002
+    },
+    {
+      key: 'spreadX',
+      defaultValue: .25,
+      min: -.1,
+      max: .1
+    },
+    {
+      key: 'spreadY',
+      defaultValue: .25,
+      min: -.1,
+      max: .1
     },
 
 
@@ -114,6 +132,10 @@ module.exports = {
     {
       method: 'debug', // needs to be unique
       title: 'debug microphone' // should be human
+    },
+    {
+      method: 'rgbSplit', // needs to be unique
+      title: 'rgb split' // should be human
     },
     {
       method: 'blendLerp', // needs to be unique

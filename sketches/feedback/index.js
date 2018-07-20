@@ -58,9 +58,17 @@ class Feedback {
           type: "b",
           value: false
         },
+        rgbSplit: {
+          type: "b",
+          value: false
+        },
         center: {
           type: "v4",
           value: new THREE.Vector4(.5, .5, 1, .5)
+        },
+        spread: {
+          type: "v4",
+          value: new THREE.Vector4(.01, 0., 0., 0.)
         },
         shift: {
           type: "v4",
@@ -94,7 +102,7 @@ class Feedback {
 
     }, "tex")
     this.added = false;
-    this.togglePostSave();
+    //this.togglePostSave();
   }
 
   lerp(v0, v1, t) {
@@ -106,6 +114,9 @@ class Feedback {
   }
   debug() {
     this.shift.uniforms.debug.value = !this.shift.uniforms.debug.value;
+  }
+  rgbSplit() {
+    this.shift.uniforms.rgbSplit.value = !this.shift.uniforms.rgbSplit.value;
   }
 
   togglePostSave() {
@@ -184,6 +195,13 @@ class Feedback {
       y: params.angleMax,
       z: params.angleFreq,
       w: params.anglePhase
+    }
+    
+    this.shift.uniforms.spread.value = {
+      x: params.micSpread,
+      y: 0,
+      z: params.spreadX,
+      w: params.spreadY
     }
     //console.log(this.camera);
   }

@@ -10,7 +10,10 @@ class VertHack {
 
   constructor (scene) {
    	this.scene = scene;
-		this.materials = [];
+    this.materials = [];
+    this.texture = new THREE.TextureLoader().load(__dirname+"\\lut.png");
+    this.texture.wrapS = THREE.RepeatWrapping;
+    this.texture.wrapT = THREE.RepeatWrapping;
     this.search();
   }
 
@@ -20,6 +23,10 @@ class VertHack {
 			this.materials[i].uniforms.waveAmp.value = new THREE.Vector3(params.xAmp, params.yAmp, params.zAmp);
 			this.materials[i].uniforms.waveFreq.value = new THREE.Vector3(params.xFreq, params.yFreq, params.zFreq);
 			this.materials[i].uniforms.wavePhase.value = new THREE.Vector3(params.xPhase, params.yPhase, params.zPhase);
+			this.materials[i].uniforms.sampleParams.value = {x:params.lutY,
+                                                             y:params.lutRotation,
+                                                             z:params.lutScale,
+                                                             w:0}
 		}		
   }
 	
@@ -31,9 +38,11 @@ class VertHack {
 			if(this.materials[i].uniforms == null)
 				this.materials[i].uniforms = {};
 			this.materials[i].uniforms.normalAmp = {type:'f', value:1}
+			this.materials[i].uniforms.sampleParams = {type:'v4', value:new THREE.Vector4()}
 			this.materials[i].uniforms.waveAmp = {type:'v3', value:new THREE.Vector3()}
 			this.materials[i].uniforms.wavePhase = {type:'v3', value:new THREE.Vector3()}
 			this.materials[i].uniforms.waveFreq = {type:'v3', value:new THREE.Vector3()}
+			this.materials[i].uniforms.tex = {type:'t', value:this.texture}
 			this.materials[i].needsUpdate = true;
 		}
 		console.log('found '+this.materials.length+' materials');

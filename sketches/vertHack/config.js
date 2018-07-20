@@ -69,6 +69,24 @@ module.exports = {
       min:0,
 			max:6.2831853
     },
+    {
+      key: 'lutY', // needs to be unique
+      defaultValue: 0,
+      min:0,
+      max:1.
+    },
+    {
+      key: 'lutRotation', // needs to be unique
+      defaultValue: 0,
+      min:-1.,
+      max:1.
+    },
+    {
+      key: 'lutScale', // needs to be unique
+      defaultValue: 0,
+      min:1.,
+      max:16.
+    },
     
   ],
   // Shots are single functions that can fire, as opposed to values that change
