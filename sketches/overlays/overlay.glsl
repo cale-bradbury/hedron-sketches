@@ -110,12 +110,12 @@ vec3 getBlended(vec3 a, vec3 b, vec3 f){
 void main(){
 	 vec2 p =local;
     vec4 color = texture2D(tex,p);
-     p-=.5;
+     /*p-=.5;
      p*=scale;
      p+=.5;
      p.x = abs(mod(p.x+1., 2.)-1.);
-     p = clamp(p,vec2(0.01), vec2(.99));
-    vec4 overlay = texture2D(sample, (clip.xy + p*clip.zw));
+     p = clamp(p,vec2(0.01), vec2(.99));*/
+    vec4 overlay = texture2D(sample, p);
     
     
 	 gl_FragColor = vec4(getBlended(color.rgb, overlay.rgb, vec3(strength)), 1.) ;

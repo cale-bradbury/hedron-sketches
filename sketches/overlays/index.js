@@ -16,7 +16,7 @@ class Overlay {
     this.clip = new THREE.Vector4(0, 0, this.size.z, 1);
     this.texture = new THREE.TextureLoader().load(__dirname+"\\GrowingfFlags.png");
     //this.texture.magFilter = THREE.NearestFilter;
-    this.texture.minFilter = THREE.NearestFilter;
+    //this.texture.minFilter = THREE.NearestFilter;
     
     this.mirror = new EffectComposer.ShaderPass({
       uniforms: {

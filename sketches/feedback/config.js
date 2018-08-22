@@ -138,6 +138,10 @@ module.exports = {
       title: 'rgb split' // should be human
     },
     {
+      method: 'keyBlack', // needs to be unique
+      title: 'key black' // should be human
+    },
+    {
       method: 'blendLerp', // needs to be unique
       title: 'mode lerp' // should be human
     },

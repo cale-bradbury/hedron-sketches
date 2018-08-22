@@ -62,6 +62,10 @@ class Feedback {
           type: "b",
           value: false
         },
+        keyBlack: {
+          type: "b",
+          value: false
+        },
         center: {
           type: "v4",
           value: new THREE.Vector4(.5, .5, 1, .5)
@@ -117,6 +121,9 @@ class Feedback {
   }
   rgbSplit() {
     this.shift.uniforms.rgbSplit.value = !this.shift.uniforms.rgbSplit.value;
+  }
+  keyBlack() {
+    this.shift.uniforms.keyBlack.value = !this.shift.uniforms.keyBlack.value;
   }
 
   togglePostSave() {

@@ -12,6 +12,7 @@ uniform vec4 angle; //xy - min/max z-freq w-phase
 uniform int blend; 
 uniform bool debug;
 uniform bool rgbSplit;
+uniform bool keyBlack;
 uniform vec4 spread;
 
 
@@ -198,25 +199,30 @@ void main(){
     old = hsv2rgb(old);
     
     if(blend==0){                 //mix
-      new = mix(new, old, fade);
+      old = mix(new, old, fade);
     }else if (blend==1){          //add
-      new = max(new, old*fade);
+      old = max(new, old*fade);
     }else if (blend==2){          //divide
-      new = mix(new, abs(mod(new/(old+.0001)+1., 2.)-1.), fade);
+      old = mix(new, abs(mod(new/(old+.0001)+1., 2.)-1.), fade);
     }else if (blend==3){          //difference
-      new = mix(new, abs(new-old), fade);
+      old = mix(new, abs(new-old), fade);
     }else if (blend==4){          //color burn
-      new = mix(new, (1.0 - (1.0 - old) / new), fade);
+      old = mix(new, (1.0 - (1.0 - old) / new), fade);
     }else if (blend==5){          //darken
-      new = mix(new, min(new, old), fade);
+      old = mix(new, min(new, old), fade);
     }else if (blend==6){          //multiply
-      new = mix(new, new*old, fade);
+      old = mix(new, new*old, fade);
     }else if (blend==7){          //screen
-      new = mix(new, new + old - new * old, fade);
+      old = mix(new, new + old - new * old, fade);
     }else if (blend==8){          //pinLight
-      new = mix(new, pinLight(new, old), fade);
+      old = mix(new, pinLight(new, old), fade);
     }else if (blend==9){          //saturation
-      new = mix(new, saturation(new, old), fade);
+      old = mix(new, saturation(new, old), fade);
     }
-    gl_FragColor = vec4(new, 1.0);
+    
+    if(keyBlack){
+      old = mix(old, new, smoothstep(0., .01, new.r+new.g+new.b));
+    }
+    
+    gl_FragColor = vec4(old, 1.0);
 } 
