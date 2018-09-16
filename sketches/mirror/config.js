@@ -15,18 +15,6 @@ module.exports = {
       min: 1,
       max: 5
     },
-    {
-      key: 'blackoutX', // needs to be unique
-      defaultValue: 0, // should be human
-      min: 0,
-      max: .5
-    },
-    {
-      key: 'blackoutY', // needs to be unique
-      defaultValue: 0, // should be human
-      min: 0,
-      max: .5
-    },
   ],
 
   shots: [

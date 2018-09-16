@@ -30,14 +30,6 @@ class Mirror {
         scale: {
           type: "f",
           value: 1
-        },
-        blackX: {
-          type: "f",
-          value:0
-        },
-        blackY: {
-          type: "f",
-          value:0
         }
       },
       vertexShader: vert,
@@ -66,8 +58,6 @@ class Mirror {
   }
 
   update(params, time, delta, allParams) {
-    this.mirror.uniforms.blackX.value = params.blackoutX;
-    this.mirror.uniforms.blackY.value = params.blackoutY;
     this.mirror.uniforms.scale.value = params.scale;
   }
 
