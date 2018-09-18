@@ -4,7 +4,7 @@
 
 module.exports = {
   // Default title when sketch is loaded in (can be changed by user)
-  defaultTitle: 'feedback',
+  defaultTitle: 'feedglitch',
   // Params are values between 0 and 1 that can be manipulated by the user
   // these values are sent to the sketch every frame
   // e.g. Speed, scale, colour
@@ -16,109 +16,57 @@ module.exports = {
       max: 1
     },
     {
-      key: 'xPos',
+      key: 'xMin',
+      title: "x shift min",
       defaultValue: .5,
-      min: 0,
-      max: 1
+      min: 10,
+      max: -10
     },
     {
-      key: 'yPos',
+      key: 'yMin',
+      title: "y shift min",
       defaultValue: .5,
-      min: 0,
-      max: 1
+      min: 10,
+      max: -10
+    },
+    {
+      key: 'xMax',
+      title: "x shift max",
+      defaultValue: .5,
+      min: 20,
+      max: -20
+    },
+    {
+      key: 'yMax',
+      title: "y shift max",
+      defaultValue: .5,
+      min: 20,
+      max: -20
+    },
+    {
+      key: 'highCut',
+      title: "high cut",
+      defaultValue: 0,
+      min: 1,
+      max: .1
     },
     {
       key: 'hue',
       defaultValue: .5,
-      min: -.1,
-      max: .1
+      min: 0,
+      max: 3.14159
     },
     {
       key: 'saturation',
-      defaultValue: .5,
-      min: -.1,
-      max: .1
-    },
-    {
-      key: 'brightness',
-      defaultValue: .5,
-      min: -.1,
-      max: .1
-    },
-    {
-      key: 'xShift',
-      title: "min distance shift",
-      defaultValue: .5,
-      min: -.1,
-      max: .1
-    },
-    {
-      key: 'yShift',
-      title: "max distance shift",
-      defaultValue: .5,
-      min: -.1,
-      max: .1
-    },
-    {
-      key: 'anglePhase',
-      defaultValue: 0,
-      min: 0,
-      max: 6.28318530718
-    },
-    {
-      key: 'angleMin',
-      defaultValue: .5,
-      min: -.03,
-      max: .03
-    },
-    {
-      key: 'angleMax',
-      defaultValue: .5,
-      min: -.03,
-      max: .03
-    },
-    {
-      key: 'angleFreq',
-      defaultValue: 0,
-      min: 0,
-      max: 100
-    },
-    {
-      key: 'angleScale',
-      title: 'mic angle mul',
-      defaultValue: .5,
-      min: 1,
-      max: 16
-    },
-    {
-      key: 'angleOffset',
-      title: 'mic angle off',
       defaultValue: .5,
       min: 0,
       max: 1
     },
     {
-      key: 'micSpread',
+      key: 'brightness',
       defaultValue: .5,
       min: 0,
-      max: .002
-    },
-    {
-      key: 'spreadX',
-      defaultValue: .25,
-      min: -.1,
-      max: .1
-    },
-    {
-      key: 'spreadY',
-      defaultValue: .25,
-      min: -.1,
-      max: .1
-    },
-    {
-      key: 'postToggled',
-      defaultValue: 0,
-      hidden: true
+      max: 1
     },
     {
       key: 'blend',

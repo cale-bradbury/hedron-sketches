@@ -2,9 +2,9 @@ const THREE = require('three'),
   EffectComposer = require('three-effectcomposer')(THREE)
 const SavePass = require('../../shared/savepass')(THREE,EffectComposer)
 const glsl = require('glslify')
-const feedbackFrag = glsl.file('./feedbacker.glsl')
+const feedbackFrag = glsl.file('./feedglitch.glsl')
 
-class Feedback {
+class FeedGlitch {
 
   constructor(scene, meta, params) {
     var vert = "varying vec2 local;\n" +
@@ -20,14 +20,13 @@ class Feedback {
       "	gl_FragColor = texture2D(tex,local);\n" +
       "}";
 
-
-
     this.root = new THREE.Group()
     this.camera = scene.camera;
     this.renderer = scene.renderer;
     this.scene = scene;
 
     this.save = new SavePass();
+    console.log(params);
 
     this.shift = new EffectComposer.ShaderPass({
       uniforms: {
@@ -44,10 +43,6 @@ class Feedback {
           value: scene.analyzer.texture
         },
         fade: {
-          type: "f",
-          value: .5
-        },
-        time: {
           type: "f",
           value: 0
         },
@@ -66,10 +61,6 @@ class Feedback {
         keyBlack: {
           type: "b",
           value: false
-        },
-        center: {
-          type: "v4",
-          value: new THREE.Vector4(.5, .5, 1, .5)
         },
         spread: {
           type: "v4",
@@ -138,7 +129,6 @@ class Feedback {
     this.scene.addPost(this.postSave);
     return {postToggled: 1}    
   }
-  
   setBlend(i){
     this.shift.uniforms.blend.value = i;
     return {blend:i}
@@ -176,35 +166,24 @@ class Feedback {
 
   update(params, time, delta, allParams) {
     var size = this.scene.renderer.getSize();
-   // params.xShift /= size.width;
-   // params.yShift /= size.width;
-    params.dShift /= 360 / 3.1415;
-    params.aShift /= 360 / 3.1415
 
     if (this.clearNextFrame) {
       this.clearNextFrame = false;
       params.fade = 0;
     }
-    this.shift.uniforms.center.value = {
-      x: params.xPos,
-      y: params.yPos,
-      z: Math.round(params.angleScale),
-      w: params.angleOffset
-    }
     this.shift.uniforms.mic.value = this.scene.analyzer.texture;
-    this.shift.uniforms.time.value = time;
     this.shift.uniforms.fade.value = params.fade;
     this.shift.uniforms.shift.value = {
-      x: params.xShift,
-      y: params.yShift,
-      z: 0,
-      w: 0
-    }
+      x: params.xMin/size.width,
+      y: params.yMin/size.height,
+      z: params.xMax/size.width,
+      w: params.yMax/size.height
+    }    
     this.shift.uniforms.hsb.value = {
       x: params.hue,
       y: params.saturation,
       z: params.brightness,
-      w: 1+size.width/size.height
+      w: params.highCut
     }
     this.shift.uniforms.angle.value = {
       x: params.angleMin,
@@ -233,4 +212,4 @@ class Feedback {
 /** HEDRON TIP **
   Class must be exported as a default.
 **/
-module.exports = Feedback
+module.exports = FeedGlitch
