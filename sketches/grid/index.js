@@ -69,7 +69,10 @@ class Grid {
       },
     });
     this.plane = new THREE.Mesh(geometry, this.material);
-    this.group.add(this.plane);
+    this.group.add(this.plane);    
+    this.mirror = new THREE.Mesh(geometry, this.material);
+    this.group.add(this.mirror);
+    
     this.color1 = new THREE.Color();
     this.color2 = new THREE.Color();
     this.white = new THREE.Color(1,1,1);
@@ -77,9 +80,10 @@ class Grid {
   }
 
   update (params, time, frameDiff, allParams) {
-    this.group.position.set(params.posX,params.posY,params.posZ);   
+    this.plane.position.set(params.posX,params.posY,params.posZ); 
+    this.mirror.position.set(params.posX,params.posY,-params.posZ);
+    this.group.scale.set(params.scale,params.scale,params.scale);		
     this.group.rotation.set(params.rotX,params.rotY,params.rotZ);
-    this.group.scale.set(params.scaleX, params.scaleY, 1);		
     
     this.material.uniforms.shape.value = {
       x:params.freqX, 
@@ -108,6 +112,14 @@ class Grid {
       y:this.color2.g,
       z:this.color2.b, 
       w:1}
+  }
+  
+  toggleMirror(){
+    if(this.mirror.parent == null){
+      this.group.add(this.mirror);
+    }else{
+      this.group.remove(this.mirror);
+    }
   }
 	
   

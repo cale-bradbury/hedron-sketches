@@ -12,20 +12,20 @@ module.exports = {
     {
       key: 'posX',
       defaultValue: 0,
-      min: -500,
-      max: 500
+      min: -1,
+      max: 1
     },
     {
       key: 'posY',
       defaultValue: 0,
-      min: -500,
-      max: 500
+      min: -1,
+      max: 1
     },
     {
       key: 'posZ',
       defaultValue: 0,
-      min: -500,
-      max: 500
+      min: -1,
+      max: 1
     },
     {
       key: 'rotX', // needs to be unique
@@ -49,14 +49,7 @@ module.exports = {
 			max:6.2831853
     },
     {
-      key: 'scaleX',
-      title: 'Scale',
-      defaultValue: 0.5,
-			min: .00001,
-			max:	5000
-    },
-    {
-      key: 'scaleY',
+      key: 'scale',
       title: 'Scale',
       defaultValue: 0.5,
 			min: .00001,
@@ -139,5 +132,9 @@ module.exports = {
   // Shots are single functions that can fire, as opposed to values that change
   // e.g. Explosions, Pre-defined animations
   shots: [
+    {
+      method: 'toggleMirror',
+      title: 'toggle mirror'
+    },
   ]
 }
