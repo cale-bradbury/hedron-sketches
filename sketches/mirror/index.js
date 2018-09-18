@@ -5,13 +5,12 @@ const frag = glsl.file('./mirror.glsl')
 
 class Mirror {
 
-  constructor(scene) {
+  constructor(scene, meta, params) {
     var vert = "varying vec2 local;\n" +
       "void main(){\n" +
       "	local = uv;\n" +
       "	gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);\n" +
       "}";
-
 
     this.mirror = new EffectComposer.ShaderPass({
       uniforms: {
@@ -21,11 +20,11 @@ class Mirror {
         },
         mirrorX: {
           type: "i",
-          value: 0
+          value: params.x
         },
         mirrorY: {
           type: "i",
-          value: 0
+          value: params.y
         },
         scale: {
           type: "f",
@@ -48,13 +47,16 @@ class Mirror {
 
   mirrorX() {
     this.mirror.uniforms.mirrorX.value = this.mirror.uniforms.mirrorX.value == 1 ? 2 : 1;
+    return {x:this.mirror.uniforms.mirrorX.value}
   }
   mirrorY() {
     this.mirror.uniforms.mirrorY.value = this.mirror.uniforms.mirrorY.value == 1 ? 2 : 1;
+    return {y:this.mirror.uniforms.mirrorY.value}
   }
   mirrorOff() {
     this.mirror.uniforms.mirrorX.value = 0;
     this.mirror.uniforms.mirrorY.value = 0;
+    return {x:0, y:0}
   }
 
   update(params, time, delta, allParams) {

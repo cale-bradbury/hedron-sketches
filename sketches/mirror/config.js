@@ -15,6 +15,20 @@ module.exports = {
       min: 1,
       max: 5
     },
+    {
+      key: 'x', // needs to be unique
+      defaultValue: 0, // should be human
+      min:0,
+      max:2,
+      hidden:true
+    },
+    {
+      key: 'y', // needs to be unique
+      defaultValue: 0, // should be human
+      min:0,
+      max:2,
+      hidden:true
+    },
   ],
 
   shots: [
