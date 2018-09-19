@@ -158,6 +158,11 @@ module.exports = {
       min: .0001,
       max: 1
     },
+    {
+      key: 'text',
+      defaultValue: 'trippy',
+      type: 'string'
+    },
 
   ],
   // Shots are single functions that can fire, as opposed to values that change

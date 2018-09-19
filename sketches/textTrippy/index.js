@@ -3,7 +3,7 @@ const fontJson = require('../../fonts/droid/droid_sans_regular.typeface.json')
 
 class Text {
 
-  constructor() {
+  constructor(scene, meta, params) {
 
     /** HEDRON TIP **
       Must define a "root" property as a THREE.Group or THREE.Object3D
@@ -14,11 +14,10 @@ class Text {
     this.group.scale.set(1000, 1000, 1000);
     this.root.add(this.group)
     this.names = []
-
+    this.text = params.text;
+    
     this.font = new THREE.Font(fontJson);
-    this.text = [":-)"," <3",": )",":D"]
-    this.textIndex = 0;
-    this.geometry = new THREE.TextGeometry(this.text[0], {
+    this.geometry = new THREE.TextGeometry(this.text, {
       size: 1,
       height: 1,
       font: this.font,
@@ -68,6 +67,29 @@ class Text {
       this.names[i].geometry = this.geometry;
     }
   }
+  
+  setText(text){
+    this.text = text;
+    let a = text.split("\\n");
+    console.log(a);
+    console.log(text);
+    this.geometry = new THREE.Geometry();
+    for(let i = 0; i<a.length; i++){
+      let geo = new THREE.TextGeometry(a[i], {
+        size: 1,
+        height: 1,
+        font: this.font,
+        style: 'normal',
+        weight: 'normal'
+      })
+      geo.center();
+      this.geometry.merge(geo, new THREE.Matrix4().makeTranslation(0, -i*1.2, 0) );
+    }
+    this.geometry.center()
+    for (var i = 0; i < this.names.length; i++) {
+      this.names[i].geometry = this.geometry;
+    }
+  }
 
   update(params, time, delta, allParams) {
     if (this.geometry == null)
@@ -75,7 +97,10 @@ class Text {
     var pi = 3.14159;
     var tau = 6.28;
     time = time / 60;
-
+    
+    if(this.text!=params.text){
+      this.setText(params.text);
+    }
 
     var remainder = params.count * 100;
     var targetCount = Math.ceil(remainder);
