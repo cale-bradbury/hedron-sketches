@@ -6,7 +6,7 @@ const feedbackFrag = glsl.file('./feedglitch.glsl')
 
 class FeedGlitch {
 
-  constructor(scene, meta, params) {
+  constructor(scene, params, meta) {
     var vert = "varying vec2 local;\n" +
       "void main(){\n" +
       "	local = uv;\n" +
@@ -26,7 +26,6 @@ class FeedGlitch {
     this.scene = scene;
 
     this.save = new SavePass();
-    console.log(params);
 
     this.shift = new EffectComposer.ShaderPass({
       uniforms: {
@@ -44,11 +43,11 @@ class FeedGlitch {
         },
         fade: {
           type: "f",
-          value: 0
+          value: .5
         },
         blend: {
           type: "i",
-          value: params.blend
+          value: 0
         },
         debug: {
           type: "b",
@@ -101,6 +100,9 @@ class FeedGlitch {
     if(params.postToggled == 1)
       this.togglePostSave()
     this.clearNextFrame = true;
+    this.blendNextFrame = params.blend;
+    setTimeout(this.debug.bind(this), 1000)
+    setTimeout(this.debug.bind(this), 2000)
   }
 
   lerp(v0, v1, t) {
@@ -166,8 +168,11 @@ class FeedGlitch {
 
   update(params, time, delta, allParams) {
     var size = this.scene.renderer.getSize();
-
     if (this.clearNextFrame) {
+      if(this.blendNextFrame!=-1){
+        this.setBlend(this.blendNextFrame)
+        this.blendNextFrame = -1
+      }
       this.clearNextFrame = false;
       params.fade = 0;
     }
