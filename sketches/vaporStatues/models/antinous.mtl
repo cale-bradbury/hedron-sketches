@@ -1,17 +1,13 @@
-newmtl Solid
-Ka  1.0 1.0 1.0
-Kd  1.0 1.0 1.0
-Ks  0.0 0.0 0.0
-d  1.0
-Ns  0.0
-illum 0
+# Blender MTL File: 'antinous.blend'
+# Material Count: 1
 
 newmtl antinous
-Ka  1.0 1.0 1.0
-Kd  1.0 1.0 1.0
-Ks  0.0 0.0 0.0
-d  1.0
-Ns  0.0
-illum 0
-map_Kd antinous.jpg
-
+Ns 0.000000
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd antinous_ambient.jpg

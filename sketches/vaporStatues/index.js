@@ -4,7 +4,7 @@ const OBJLoader = require('../../shared/OBJLoader')
 const lerp = (v0, v1, t) => {
 	return (1 - t) * v0 + t * v1
 }
-class VaporColumns {
+class VaporStatues {
 
   constructor (scene) {
    	this.scene = scene;
@@ -27,7 +27,7 @@ class VaporColumns {
       }
     )
     var loader = new THREE.OBJLoader();
-    loader.load((__dirname)+"\\models\\column.obj" , (o)=>{
+    loader.load((__dirname)+"\\models\\claudia.obj" , (o)=>{
       this.default = new THREE.Mesh(o.children[0].geometry, this.basicMat);
     });
     
@@ -89,4 +89,4 @@ class VaporColumns {
 /** HEDRON TIP **
   Class must be exported as a default.
 **/
-module.exports = VaporColumns
+module.exports = VaporStatues
