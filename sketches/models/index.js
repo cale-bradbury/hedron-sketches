@@ -6,12 +6,12 @@ const lerp = (v0, v1, t) => {
 }
 class Models {
 
-  constructor (scene) {
+  constructor (scene, params) {
    	this.scene = scene;
     this.root = new THREE.Group()
     this.group = new THREE.Group()
     this.root.add(this.group)
-    console.log(__dirname)
+    
     var paths = [
       'knot 1-3.obj',
       'knot 1-6.obj',
@@ -35,16 +35,19 @@ class Models {
     var loader = new THREE.OBJLoader();
     for(var i = 0; i< paths.length; i++){
       loader.load((__dirname)+"\\models\\"+paths[i], (o)=>{
-        o.material = this.material;
-        //this.meshes.push(o);
-        
+        o.material = this.material;        
         this.group.remove(this.meshes[0]);
-        this.meshes.unshift(new THREE.Mesh(o.children[0].geometry, this.basicMat));
+        this.meshes.unshift(new THREE.Mesh(
+          o.children[0].geometry,
+          params.normal == 1 ? this.normalMat : this.basicMat
+        ));
         this.group.add(this.meshes[0]);
       });
     }
     
     this.index = 0;
+    if(params.wireframe == 1)
+      this.wireframe();
   }
 
   update (params, time, frameDiff, allParams) {
@@ -77,16 +80,19 @@ class Models {
   
   wireframe(){
     this.normalMat.wireframe = this.basicMat.wireframe = !this.basicMat.wireframe;
+    return {wireframe:this.normalMat.wireframe?1:0}
   }
   basic(){
     for(var i = 0; i< this.meshes.length; i++){
       this.meshes[i].material = this.basicMat;
     }
+    return {normal: 0}
   }
   normal(){
     for(var i = 0; i< this.meshes.length; i++){
       this.meshes[i].material = this.normalMat;
     }
+    return {normal: 1}
   }
 }
 

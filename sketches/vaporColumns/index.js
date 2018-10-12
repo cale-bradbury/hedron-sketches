@@ -35,7 +35,7 @@ class VaporColumns {
     });
     
     this.index = 0;
-    if(this.wireframe == 1)
+    if(params.wireframe == 1)
       this.wireframe();
   }
 

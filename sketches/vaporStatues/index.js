@@ -1,91 +1,113 @@
 const THREE = require('three')
 const OBJLoader = require('../../shared/OBJLoader')
+const MTLLoader = require('../../shared/MTLLoader')
 
 const lerp = (v0, v1, t) => {
 	return (1 - t) * v0 + t * v1
 }
 class VaporStatues {
 
-  constructor (scene) {
+  constructor (scene, params) {
    	this.scene = scene;
     this.root = new THREE.Group()
     this.group = new THREE.Group()
-    this.group.position.set(0, 0, 1000)
     this.root.add(this.group)
+    scene.scene.ambientLight = new THREE.Color(.3,.3,.3)
+    var paths = [
+      'antinous',
+      'claudia',
+      'perikles',
+      'venus'
+      ]
     this.meshes = [];
-    this.default = null;
-    this.basicMat = new THREE.MeshLambertMaterial(
-      { 
-        color: 0xffffff,
-        emissive: 0x222222
-      }
-    )
+    this.materials = [];
+    
     this.normalMat = new THREE.MeshNormalMaterial(
       { 
         color: 0xffffff,
-        shading: THREE.SmoothShading
+        shading: THREE.SmoothShading,
+        side: THREE.DoubleSide
       }
     )
-    var loader = new THREE.OBJLoader();
-    loader.load((__dirname)+"\\models\\claudia.obj" , (o)=>{
-      this.default = new THREE.Mesh(o.children[0].geometry, this.basicMat);
-    });
+        
     
-    this.index = 0;
+    var mtlLoader = new THREE.MTLLoader();
+    mtlLoader.setPath((__dirname)+"\\models\\");
+    for(let i = 0; i< paths.length; i++){
+      mtlLoader.load(paths[i]+'.mtl', (m)=>{
+        m.preload();
+        let loader = new THREE.OBJLoader();
+        loader.setPath((__dirname)+"\\models\\");
+        loader.setMaterials(m);
+        loader.load(paths[i]+'.obj', (o)=>{
+          this.meshes[i] = o.children[0]
+          o.children[0].material = new THREE.MeshLambertMaterial({
+            map: o.children[0].material.map,
+            lights: true
+          })
+          this.materials[i] = o.children[0].material;
+          if(i==params.selected){
+            this.index = params.selected;
+            this.group.add(this.meshes[i])
+          }
+        });
+      });
+    }    
+    
+    if(params.wireframe == 1)
+      this.wireframe();
   }
 
   update (params, time, frameDiff, allParams) {
-      if(this.default==null)
-        return;
-      params.count = Math.round(params.count);
-      params.count *= 2;
-      params.phase *= 2;
-      if(params.count > this.meshes.length){
-        var m = this.default.clone();
-        this.group.add(m);
-        this.meshes.push(m);
-        m = this.default.clone();
-        this.group.add(m);
-        this.meshes.push(m);
-      }else if (params.count < this.meshes.length){
-        this.group.remove(this.meshes.shift());
-        this.group.remove(this.meshes.shift());
-      }
-      var phaseIn = (1.00001-Math.pow(params.phase*.5, 2))
-      for(var i = 0; i<this.meshes.length; i+=2){
-        var s = params.scale;
-        if(i==this.meshes.length-2)
-          s*= Math.min(1, phaseIn-(i-(this.meshes.length-2)))
-        this.meshes[i].scale.set(s,s,s);
-        this.meshes[i+1].scale.set(s,s,s);
-        var z = (i+params.phase) * params.zPerStep
-        var rot = (i+params.phase) * params.rotPerStep
-        this.meshes[i].position.set(params.spread, 0, z);
-        this.meshes[i+1].position.set(-params.spread, 0, z);
-        this.meshes[i].rotation.set(0, 0, rot);
-        this.meshes[i+1].rotation.set(0, 0, -rot);
-      }
+    this.group.position.x = params.posX
+    this.group.position.y = params.posY
+    this.group.position.z = params.posZ
+    this.group.rotation.x = params.rotX
+    this.group.rotation.y = params.rotY
+    this.group.rotation.z = params.rotZ
+    this.group.scale.set(params.scale, params.scale, params.scale)
+		
   }
-	  
+	
+  randomize () {
+	return {rotZ:Math.random()}
+  }
+
+  next () {
+    this.group.remove(this.meshes[this.index])
+    this.index++;
+    this.index %= this.meshes.length;
+    this.group.add(this.meshes[this.index])
+    return{selected: this.index}
+  }
+  prev () {
+    this.group.remove(this.meshes[this.index])
+    this.index+= this.meshes.length-1;
+    this.index %= this.meshes.length;
+    this.group.add(this.meshes[this.index])
+    return{selected: this.index}
+  }
+  
   wireframe(){
-    this.normalMat.wireframe = this.basicMat.wireframe = !this.basicMat.wireframe;
+    this.normalMat.wireframe = !this.normalMat.wireframe;
+    for(var i = 0; i< this.materials.length; i++){
+      this.materials[i].wireframe = this.normalMat.wireframe;
+    }
+    return {wireframe:this.normalMat.wireframe?1:0}
   }
   basic(){
     for(var i = 0; i< this.meshes.length; i++){
-      this.meshes[i].material = this.basicMat;
+      this.meshes[i].material = this.materials[i];
     }
-    if(this.default!=null)
-      this.default.material = this.basicMat;
+    return {normal: 0}
   }
   normal(){
     for(var i = 0; i< this.meshes.length; i++){
       this.meshes[i].material = this.normalMat;
     }
-    if(this.default!=null)
-      this.default.material = this.normalMat;
+    return {normal: 1}
   }
 }
-
 /** HEDRON TIP **
   Class must be exported as a default.
 **/

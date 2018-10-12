@@ -1,4 +1,4 @@
-# Blender MTL File: 'antinous.blend'
+# Blender MTL File: 'statues.blend'
 # Material Count: 1
 
 newmtl antinous
@@ -10,4 +10,4 @@ Ke 1.000000 1.000000 1.000000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd antinous_ambient.jpg
+map_Kd antinous.jpg

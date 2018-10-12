@@ -60,6 +60,20 @@ module.exports = {
       defaultValue: 0,
 			min: 1,
 			max: 64
+    },
+    {
+      key: 'normal',
+      defaultValue: 0,
+			min: 0,
+			max: 1,
+      hidden: true
+    },
+    {
+      key: 'wireframe',
+      defaultValue: 0,
+			min: 0,
+			max: 1,
+      hidden: true
     }
     
   ],

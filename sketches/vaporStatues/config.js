@@ -10,6 +10,27 @@ module.exports = {
   // e.g. , scale, colour
   params: [
     {
+      key: 'rotX', // needs to be unique
+      title: 'Rotation X', // should be human
+      defaultValue: 0,
+			min:0,
+			max:6.2831853
+    },
+    {
+      key: 'rotY',
+      title: 'Rotation  Y',
+      defaultValue: 0,
+			min:0,
+			max:6.2831853
+    },
+    {
+      key: 'rotZ',
+      title: 'Rotation  Z',
+      defaultValue: 0,
+			min:0,
+			max:6.2831853
+    },
+    {
       key: 'scale',
       title: 'Scale',
       defaultValue: 0.5,
@@ -17,41 +38,64 @@ module.exports = {
 			max:	1000
     },
     {
-      key: 'spread',
-      title: 'spread',
-      defaultValue: 0.5,
-			min: .00001,
-			max:	1000
-    },
-    {
-      key: 'count',
+      key: 'repeat',
       defaultValue: 0,
 			min: 1,
 			max: 64
     },
     {
-      key: 'phase',
-      defaultValue: 0,
-			min: 0,
-			max: 1
-    },
-    {
-      key: 'zPerStep',
-      defaultValue: 0,
-			min: 0,
-			max: -1000
-    },
-    {
-      key: 'rotPerStep',
+      key: 'posX',
       defaultValue: .5,
-			min: -1.5707,
-			max: 1.5707
+			min: -1000,
+			max: 1000
+    },
+    {
+      key: 'posY',
+      defaultValue: .5,
+			min: -1000,
+			max: 1000
+    },
+    {
+      key: 'posZ',
+      defaultValue: .5,
+			min: -1000,
+			max: 1000
+    },
+    {
+      key: 'normal',
+      defaultValue: 0,
+			min: 0,
+			max: 1,
+      hidden: true
+    },
+    {
+      key: 'wireframe',
+      defaultValue: 0,
+			min: 0,
+			max: 1,
+      hidden: true
+    },
+    {
+      key:'selected',
+      hidden:true
     }
     
   ],
   // Shots are single functions that can fire, as opposed to values that change
   // e.g. Explosions, Pre-defined animations
   shots: [
+    {
+      method: 'randomize', // needs to be unique
+      title: 'Randomize' // should be human
+    },
+    {
+      method: 'next', // needs to be unique
+      title: 'next' // should be human
+    },
+    {
+      method: 'prev', // needs to be unique
+      title: 'prev' // should be human
+    },
     {
       method: 'wireframe', // needs to be unique
       title: 'wireframe' // should be human
