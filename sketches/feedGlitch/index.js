@@ -61,15 +61,11 @@ class FeedGlitch {
           type: "b",
           value: false
         },
-        spread: {
+        center: {
           type: "v4",
           value: new THREE.Vector4(.01, 0., 0., 0.)
         },
         shift: {
-          type: "v4",
-          value: new THREE.Vector4(0, 0, 0, 0)
-        },
-        angle: {
           type: "v4",
           value: new THREE.Vector4(0, 0, 0, 0)
         },
@@ -190,18 +186,12 @@ class FeedGlitch {
       z: params.brightness,
       w: params.highCut
     }
-    this.shift.uniforms.angle.value = {
-      x: params.angleMin,
-      y: params.angleMax,
-      z: params.angleFreq,
-      w: params.anglePhase
-    }
     
-    this.shift.uniforms.spread.value = {
-      x: params.micSpread,
-      y: 0,
-      z: params.spreadX,
-      w: params.spreadY
+    this.shift.uniforms.center.value = {
+      x: params.xCenter,
+      y: params.yCenter,
+      z: 0,
+      w: 0
     }
     //console.log(this.camera);
   }

@@ -7,13 +7,12 @@ uniform float time;
 uniform vec4 center; //xy-uv ofset zw-angle mul/offset 
 uniform vec4 shift; //xy-distance min/max zw-angle min/max
 uniform vec4 hsb;
-uniform vec4 angle; //xy - min/max z-freq w-phase
 
 uniform int blend;
 uniform bool debug;
 uniform bool rgbSplit;
 uniform bool keyBlack;
-uniform vec4 spread;
+//uniform vec4 spread;
 
 
 vec4 hueShift(vec4 color, float hueAdjust) {
@@ -91,7 +90,7 @@ void main() {
   vec3 new = c.rgb;
   
   //get microphone value
-  vec2 u = abs(uv-.5)*2.;
+  vec2 u = abs(uv-center.xy)*2.;
   vec2 m = vec2(u.x, u.y)*hsb.w;
   m = vec2(texture2D(mic, vec2(m.x, .25)).r, texture2D(mic, vec2(m.y, .25)).r);
   if(debug){

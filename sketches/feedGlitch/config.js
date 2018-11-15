@@ -16,6 +16,16 @@ module.exports = {
       max: 1
     },
     {
+      key: 'xCenter',
+      title: "x center",
+      defaultValue: .5,
+    },
+    {
+      key: 'yCenter',
+      title: "y center",
+      defaultValue: .5,
+    },
+    {
       key: 'xMin',
       title: "x shift min",
       defaultValue: .5,
@@ -70,6 +80,11 @@ module.exports = {
     },
     {
       key: 'blend',
+      defaultValue: 0,
+      hidden: true
+    },
+    {
+      key: 'postToggled',
       defaultValue: 0,
       hidden: true
     },
