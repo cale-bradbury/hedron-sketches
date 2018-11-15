@@ -12,9 +12,9 @@ class Overlay {
       "	gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);\n" +
       "}";
 
-    this.size = new THREE.Vector4(802.0/9624.0, 1, 1.0/12.0, 1)
-    this.clip = new THREE.Vector4(0, 0, this.size.z, 1);
-    this.texture = new THREE.TextureLoader().load(__dirname+"\\GrowingfFlags.png");
+    this.size = new THREE.Vector4(1, 1, 1, 1)
+    this.clip = new THREE.Vector4(0, 0, 1, 1);
+    this.texture = new THREE.TextureLoader().load(__dirname+"\\show.png");
     //this.texture.magFilter = THREE.NearestFilter;
     //this.texture.minFilter = THREE.NearestFilter;
     
