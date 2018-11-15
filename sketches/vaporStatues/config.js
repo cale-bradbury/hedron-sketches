@@ -31,19 +31,6 @@ module.exports = {
 			max:6.2831853
     },
     {
-      key: 'scale',
-      title: 'Scale',
-      defaultValue: 0.5,
-			min: .00001,
-			max:	1000
-    },
-    {
-      key: 'repeat',
-      defaultValue: 0,
-			min: 1,
-			max: 64
-    },
-    {
       key: 'posX',
       defaultValue: .5,
 			min: -1000,
@@ -60,6 +47,33 @@ module.exports = {
       defaultValue: .5,
 			min: -1000,
 			max: 1000
+    },
+    {
+      key: 'scale',
+      title: 'Scale',
+      defaultValue: 0.5,
+			min: .00001,
+			max:	1000
+    },
+    {
+      key: 'pScale',
+      defaultValue: 0
+    },
+    {
+      key: 'pAlpha',
+      defaultValue: .3
+    },
+    {
+      key: 'pPhase',
+      defaultValue: .5
+    },
+    {
+      key: 'pScrollX',
+      defaultValue: .5
+    },
+    {
+      key: 'pScrollY',
+      defaultValue: .5
     },
     {
       key: 'normal',

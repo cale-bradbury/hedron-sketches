@@ -13,6 +13,33 @@ class VaporStatues {
     this.group = new THREE.Group()
     this.root.add(this.group)
     scene.scene.ambientLight = new THREE.Color(.3,.3,.3)
+    
+    this.power = new THREE.Group();
+    this.torus = new THREE.TorusGeometry(1, 1, 64, 64)
+    let count = 5
+    this.powerTexture = new THREE.TextureLoader().load( __dirname+"/models/power.png" );
+    this.powerTexture.wrapS = THREE.RepeatWrapping;
+    this.powerTexture.wrapT = THREE.RepeatWrapping;
+    this.powerTexture.repeat.set(20, 20)
+    for(let i = params.pPhase; i< count+params.pPhase; i++){
+      let mat = new THREE.MeshPhongMaterial({
+        color:0x338800, 
+        transparent:true, 
+        opacity: params.pAlpha,
+        shading: THREE.SmoothShading,
+        alphaMap: this.powerTexture,
+        //side: THREE.BackSide,
+      })
+      let m = new THREE.Mesh(this.torus, mat);
+      let s = i/count
+      m.scale.set(s,s,s);
+      m.rotation.set(90, 0, 0)
+      this.power.add(m);
+    }
+    this.power.scale.set(params.pScale,params.pScale,params.pScale);
+    this.power.position.set(0, .1, 0)
+    this.group.add(this.power);
+    
     var paths = [
       'antinous',
       'claudia',
@@ -28,8 +55,7 @@ class VaporStatues {
         shading: THREE.SmoothShading,
         side: THREE.DoubleSide
       }
-    )
-        
+    )  
     
     var mtlLoader = new THREE.MTLLoader();
     mtlLoader.setPath((__dirname)+"\\models\\");
@@ -66,7 +92,18 @@ class VaporStatues {
     this.group.rotation.y = params.rotY
     this.group.rotation.z = params.rotZ
     this.group.scale.set(params.scale, params.scale, params.scale)
-		
+    if(this.power.children.length > 0){
+      this.powerTexture.offset.set(params.pScrollX, params.pScrollY)
+      this.power.scale.set(params.pScale,params.pScale,params.pScale)
+      for(let i = 0; i<this.power.children.length; i++){
+        let x = (i+params.pPhase)/this.power.children.length;
+        this.power.children[i].scale.set(x, x, x);
+        this.power.children[i].material.opacity = params.pAlpha;      
+      }
+      this.power.children[0].material.opacity *= (params.pPhase);
+      this.power.children[this.power.children.length -1].material.opacity *= (1-params.pPhase);
+    }
+      
   }
 	
   randomize () {
