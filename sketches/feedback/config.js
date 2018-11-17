@@ -12,108 +12,108 @@ module.exports = {
     {
       key: 'fade',
       defaultValue: .9,
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
     {
       key: 'xPos',
       defaultValue: .5,
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'yPos',
       defaultValue: .5,
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'hue',
       defaultValue: .5,
-      min: -.1,
-      max: .1
+      defaultMin: -.1,
+      defaultMax: .1
     },
     {
       key: 'saturation',
       defaultValue: .5,
-      min: -.1,
-      max: .1
+      defaultMin: -.1,
+      defaultMax: .1
     },
     {
       key: 'brightness',
       defaultValue: .5,
-      min: -.1,
-      max: .1
+      defaultMin: -.1,
+      defaultMax: .1
     },
     {
       key: 'xShift',
       title: "min distance shift",
       defaultValue: .5,
-      min: -.1,
-      max: .1
+      defaultMin: -.1,
+      defaultMax: .1
     },
     {
       key: 'yShift',
       title: "max distance shift",
       defaultValue: .5,
-      min: -.1,
-      max: .1
+      defaultMin: -.1,
+      defaultMax: .1
     },
     {
       key: 'anglePhase',
       defaultValue: 0,
-      min: 0,
-      max: 6.28318530718
+      defaultMin: 0,
+      defaultMax: 6.28318530718
     },
     {
       key: 'angleMin',
       defaultValue: .5,
-      min: -.03,
-      max: .03
+      defaultMin: -.03,
+      defaultMax: .03
     },
     {
       key: 'angleMax',
       defaultValue: .5,
-      min: -.03,
-      max: .03
+      defaultMin: -.03,
+      defaultMax: .03
     },
     {
       key: 'angleFreq',
       defaultValue: 0,
-      min: 0,
-      max: 100
+      defaultMin: 0,
+      defaultMax: 100
     },
     {
       key: 'angleScale',
       title: 'mic angle mul',
       defaultValue: .5,
-      min: 1,
-      max: 16
+      defaultMin: 1,
+      defaultMax: 16
     },
     {
       key: 'angleOffset',
       title: 'mic angle off',
       defaultValue: .5,
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'micSpread',
       defaultValue: .5,
-      min: 0,
-      max: .002
+      defaultMin: 0,
+      defaultMax: .002
     },
     {
       key: 'spreadX',
       defaultValue: .25,
-      min: -.1,
-      max: .1
+      defaultMin: -.1,
+      defaultMax: .1
     },
     {
       key: 'spreadY',
       defaultValue: .25,
-      min: -.1,
-      max: .1
+      defaultMin: -.1,
+      defaultMax: .1
     },
     {
       key: 'postToggled',

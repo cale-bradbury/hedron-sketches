@@ -13,52 +13,52 @@ module.exports = {
       key: 'scale',
       title: 'Scale',
       defaultValue: 0.5,
-			min: .00001,
-			max:	1000
+			defaultMin: .00001,
+			defaultMax:	1000
     },
     {
       key: 'spread',
       title: 'spread',
       defaultValue: 0.5,
-			min: .00001,
-			max:	1000
+			defaultMin: .00001,
+			defaultMax:	1000
     },
     {
       key: 'count',
       defaultValue: 0,
-			min: 1,
-			max: 64
+			defaultMin: 1,
+			defaultMax: 64
     },
     {
       key: 'phase',
       defaultValue: 0,
-			min: 0,
-			max: 1
+			defaultMin: 0,
+			defaultMax: 1
     },
     {
       key: 'zPerStep',
       defaultValue: 0,
-			min: 0,
-			max: -1000
+			defaultMin: 0,
+			defaultMax: -1000
     },
     {
       key: 'rotPerStep',
       defaultValue: .5,
-			min: -1.5707,
-			max: 1.5707
+			defaultMin: -1.5707,
+			defaultMax: 1.5707
     },
     {
       key: 'normal',
       defaultValue: 0,
-			min: 0,
-			max: 1,
+			defaultMin: 0,
+			defaultMax: 1,
       hidden: true
     },
     {
       key: 'wireframe',
       defaultValue: 0,
-			min: 0,
-			max: 1,
+			defaultMin: 0,
+			defaultMax: 1,
       hidden: true
     }
     

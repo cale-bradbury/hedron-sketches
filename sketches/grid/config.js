@@ -12,120 +12,120 @@ module.exports = {
     {
       key: 'posX',
       defaultValue: 0,
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
     {
       key: 'posY',
       defaultValue: 0,
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
     {
       key: 'posZ',
       defaultValue: 0,
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
     {
       key: 'rotX', // needs to be unique
       title: 'Rotation X', // should be human
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'rotY',
       title: 'Rotation  Y',
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'rotZ',
       title: 'Rotation  Z',
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'scale',
       title: 'Scale',
       defaultValue: 0.5,
-			min: .00001,
-			max:	5000
+			defaultMin: .00001,
+			defaultMax:	5000
     },
     {
       key: 'freqX',
       defaultValue: 0.5,
-			min: 1,
-			max:128
+			defaultMin: 1,
+			defaultMax:128
     },
     {
       key: 'freqY',
       defaultValue: 0.5,
-			min: 1,
-			max:128
+			defaultMin: 1,
+			defaultMax:128
     },
     {
       key: 'phaseX',
       defaultValue: 0,
-			min: -1,
-			max:1
+			defaultMin: -1,
+			defaultMax:1
     },
     {
       key: 'phaseY',
       defaultValue: 0,
-			min: -1,
-			max:1
+			defaultMin: -1,
+			defaultMax:1
     },
     {
       key: 'gridVisible',
       defaultValue: 0,
-			min: 0,
-			max:1
+			defaultMin: 0,
+			defaultMax:1
     },
     {
       key: 'gridFadeStart',
       defaultValue: 0,
-			min: 0,
-			max:.9999
+			defaultMin: 0,
+			defaultMax:.9999
     },
     {
       key: 'gridFadeEnd',
       defaultValue: 0,
-			min: 0.0001,
-			max:1
+			defaultMin: 0.0001,
+			defaultMax:1
     },
     {
       key: 'edgeFade',
       defaultValue: 0,
-			min: 0,
-			max:1
+			defaultMin: 0,
+			defaultMax:1
     },
     {
       key: 'colorMath',
       defaultValue: 0,
-			min: 0,
-			max:1
+			defaultMin: 0,
+			defaultMax:1
     },
     {
       key: 'hue',
       defaultValue: 0,
-			min: 0,
-			max:1
+			defaultMin: 0,
+			defaultMax:1
     },
     {
       key: 'saturation',
       defaultValue: 0,
-			min: 0,
-			max:1
+			defaultMin: 0,
+			defaultMax:1
     },
     {
       key: 'brightness',
       defaultValue: 0,
-			min: 0,
-			max:1
+			defaultMin: 0,
+			defaultMax:1
     },
     
   ],

@@ -12,26 +12,26 @@ module.exports = {
     {
       key: 'scale', // needs to be unique
       defaultValue: 0, // should be human
-      min: 1,
-      max: 5
+      defaultMin: 1,
+      defaultMax: 5
     },
     {
       key: 'strength', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'blend', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 9
+      defaultMin: 0,
+      defaultMax: 9
     },
     {
       key: 'clip', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 2
+      defaultMin: 0,
+      defaultMax: 2
     }
   ],
 

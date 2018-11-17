@@ -12,38 +12,38 @@ module.exports = {
     {
       key: 'strength', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'step', // needs to be unique
       defaultValue: 0, // should be human
-      min: 1,
-      max: 5
+      defaultMin: 1,
+      defaultMax: 5
     },
     {
       key: 'rotation', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 2
+      defaultMin: 0,
+      defaultMax: 2
     },
     {
       key: 'lutY', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 2
+      defaultMin: 0,
+      defaultMax: 2
     },
     {
       key: 'scale', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 2
+      defaultMin: 0,
+      defaultMax: 2
     },
     {
       key: 'phase', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 2
+      defaultMin: 0,
+      defaultMax: 2
     }
   ],
 

@@ -12,55 +12,55 @@ module.exports = {
     {
       key: 'posX',
       defaultValue: 0,
-      min: -500,
-      max: 500
+      defaultMin: -500,
+      defaultMax: 500
     },
     {
       key: 'posY',
       defaultValue: 0,
-      min: -500,
-      max: 500
+      defaultMin: -500,
+      defaultMax: 500
     },
     {
       key: 'posZ',
       defaultValue: 0,
-      min: -500,
-      max: 500
+      defaultMin: -500,
+      defaultMax: 500
     },
     {
       key: 'rotX', // needs to be unique
       title: 'Rotation X', // should be human
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'rotY',
       title: 'Rotation  Y',
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'rotZ',
       title: 'Rotation  Z',
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'scaleX',
       title: 'Scale',
       defaultValue: 0.5,
-			min: .00001,
-			max:	1000
+			defaultMin: .00001,
+			defaultMax:	1000
     },
     {
       key: 'scaleY',
       title: 'Scale',
       defaultValue: 0.5,
-			min: .00001,
-			max:	1000
+			defaultMin: .00001,
+			defaultMax:	1000
     },
     
   ],

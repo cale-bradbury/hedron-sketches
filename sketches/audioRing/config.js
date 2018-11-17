@@ -14,32 +14,32 @@ module.exports = {
       key: 'scale',
       title: 'Scale',
       defaultValue: 0.5,
-			min: .00001,
-			max:	1000
+			defaultMin: .00001,
+			defaultMax:	1000
     },
     {
       key: 'shapeCount',
       defaultValue: 0.5,
-			min: 1,
-			max: 10
+			defaultMin: 1,
+			defaultMax: 10
     },
     {
       key: 'pointCount',
       defaultValue: 0.5,
-			min: 1,
-			max: 50
+			defaultMin: 1,
+			defaultMax: 50
     },
     {
       key: 'smoothing',
       defaultValue: 0,
-			min: 0.001,
-			max: .1
+			defaultMin: 0.001,
+			defaultMax: .1
     },
     {
       key: 'falloff',
       defaultValue: 0,
-			min: 0.001,
-			max: .1
+			defaultMin: 0.001,
+			defaultMax: .1
     },
     
   ],

@@ -12,8 +12,8 @@ module.exports = {
     {
       key: 'fade',
       defaultValue: .9,
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
     {
       key: 'xCenter',
@@ -29,54 +29,54 @@ module.exports = {
       key: 'xMin',
       title: "x shift min",
       defaultValue: .5,
-      min: 10,
-      max: -10
+      defaultMin: 10,
+      defaultMax: -10
     },
     {
       key: 'yMin',
       title: "y shift min",
       defaultValue: .5,
-      min: 10,
-      max: -10
+      defaultMin: 10,
+      defaultMax: -10
     },
     {
       key: 'xMax',
       title: "x shift max",
       defaultValue: .5,
-      min: 20,
-      max: -20
+      defaultMin: 20,
+      defaultMax: -20
     },
     {
       key: 'yMax',
       title: "y shift max",
       defaultValue: .5,
-      min: 20,
-      max: -20
+      defaultMin: 20,
+      defaultMax: -20
     },
     {
       key: 'highCut',
       title: "high cut",
       defaultValue: 0,
-      min: 1,
-      max: .1
+      defaultMin: 1,
+      defaultMax: .1
     },
     {
       key: 'hue',
       defaultValue: .5,
-      min: 0,
-      max: 3.14159
+      defaultMin: 0,
+      defaultMax: 3.14159
     },
     {
       key: 'saturation',
       defaultValue: .5,
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'brightness',
       defaultValue: .5,
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'blend',

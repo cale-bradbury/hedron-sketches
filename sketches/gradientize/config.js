@@ -12,56 +12,56 @@ module.exports = {
     {
       key: 'hueLow', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'satLow', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'briLow', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'hueMid', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'satMid', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'briMid', // needs to be unique
       defaultValue: .5, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'hueHigh', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'satHigh', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'briHigh', // needs to be unique
       defaultValue: 1, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
   ],
 

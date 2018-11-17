@@ -12,58 +12,58 @@ module.exports = {
     {
       key: 'posX', // needs to be unique
       defaultValue: .5,
-      min: -3000,
-      max: 3000
+      defaultMin: -3000,
+      defaultMax: 3000
     },
     {
       key: 'posY',
       defaultValue: .5,
-      min: -3000,
-      max: 3000
+      defaultMin: -3000,
+      defaultMax: 3000
     },
     {
       key: 'posZ',
       defaultValue: .5,
-      min: -3000,
-      max: 0
+      defaultMin: -3000,
+      defaultMax: 0
     },
 
     {
       key: 'rotX', // needs to be unique
       defaultValue: .5,
-      min: -3.1415,
-      max: 3.1415
+      defaultMin: -3.1415,
+      defaultMax: 3.1415
     },
     {
       key: 'rotY',
       defaultValue: .5,
-      min: -3.1415,
-      max: 3.1415
+      defaultMin: -3.1415,
+      defaultMax: 3.1415
     },
     {
       key: 'rotZ', // needs to be unique
       defaultValue: .5,
-      min: -3.1415,
-      max: 3.1415
+      defaultMin: -3.1415,
+      defaultMax: 3.1415
     },
 
     {
       key: 'xStep', // needs to be unique
       defaultValue: .5, // must be between 0 and 1
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
     {
       key: 'yStep',
       defaultValue: .5,
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
     {
       key: 'zStep',
       defaultValue: .5,
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
 
     {
@@ -77,8 +77,8 @@ module.exports = {
     {
       key: 'ampZ',
       defaultValue: .5,
-      min:0,
-      max:2
+      defaultMin:0,
+      defaultMax:2
     },
 
     {
@@ -119,8 +119,8 @@ module.exports = {
     {
       key: 'rotZStep',
       defaultValue: .1,
-      min: -.1,
-      max: .1
+      defaultMin: -.1,
+      defaultMax: .1
     },
     {
       key: 'alphaStart',
@@ -133,8 +133,8 @@ module.exports = {
     {
       key: 'colorPhase',
       defaultValue: 0.5,
-      min:0,
-      max: 1//6.28318530718
+      defaultMin:0,
+      defaultMax: 1//6.28318530718
     },
     {
       key: 'colorFreq',

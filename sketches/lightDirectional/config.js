@@ -12,46 +12,46 @@ module.exports = {
     {
       key: 'targetX', // needs to be unique
       defaultValue: .5,
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
     {
       key: 'targetY',
       defaultValue: .5,
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
     {
       key: 'targetZ',
       defaultValue: .5,
-      min: -1,
-      max: 1
+      defaultMin: -1,
+      defaultMax: 1
     },
 
     {
       key: 'hue', // needs to be unique
       defaultValue: 0,
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'saturation',
       defaultValue: .5,
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'brightness', // needs to be unique
       defaultValue: 1,
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
 
     {
       key: 'intensity', // needs to be unique
       defaultValue: .5, // must be between 0 and 1
-      min: 0,
-      max: 2
+      defaultMin: 0,
+      defaultMax: 2
     }
 
   ],

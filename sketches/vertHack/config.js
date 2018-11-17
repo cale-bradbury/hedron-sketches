@@ -12,80 +12,80 @@ module.exports = {
     {
       key: 'normalAmp', // needs to be unique
       defaultValue: .5,
-			min:-1,
-			max:1
+			defaultMin:-1,
+			defaultMax:1
     },
     {
       key: 'xAmp', // needs to be unique
       defaultValue: .5,
-			min:-1,
-			max:1
+			defaultMin:-1,
+			defaultMax:1
     },
     {
       key: 'yAmp', // needs to be unique
       defaultValue: .5,
-			min:-1,
-			max:1
+			defaultMin:-1,
+			defaultMax:1
     },
     {
       key: 'zAmp', // needs to be unique
       defaultValue: .5,
-			min:-1,
-			max:1
+			defaultMin:-1,
+			defaultMax:1
     },
     {
       key: 'xFreq', // needs to be unique
       defaultValue: .5,
-			min:-10,
-			max:10
+			defaultMin:-10,
+			defaultMax:10
     },
     {
       key: 'yFreq', // needs to be unique
       defaultValue: .5,
-			min:-10,
-			max:10
+			defaultMin:-10,
+			defaultMax:10
     },
     {
       key: 'zFreq', // needs to be unique
       defaultValue: .5,
-			min:-10,
-			max:10
+			defaultMin:-10,
+			defaultMax:10
     },
     {
       key: 'xPhase', // needs to be unique
       defaultValue: .5,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'yPhase', // needs to be unique
       defaultValue: .5,
-      min:0,
-			max:6.2831853
+      defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'zPhase', // needs to be unique
       defaultValue: .5,
-      min:0,
-			max:6.2831853
+      defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'lutY', // needs to be unique
       defaultValue: 0,
-      min:0,
-      max:1.
+      defaultMin:0,
+      defaultMax:1.
     },
     {
       key: 'lutRotation', // needs to be unique
       defaultValue: 0,
-      min:-1.,
-      max:1.
+      defaultMin:-1.,
+      defaultMax:1.
     },
     {
       key: 'lutScale', // needs to be unique
       defaultValue: 0,
-      min:1.,
-      max:16.
+      defaultMin:1.,
+      defaultMax:16.
     },
     
   ],

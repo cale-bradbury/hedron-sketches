@@ -12,14 +12,14 @@ module.exports = {
     {
       key: 'x', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     },
     {
       key: 'y', // needs to be unique
       defaultValue: 0, // should be human
-      min: 0,
-      max: 1
+      defaultMin: 0,
+      defaultMax: 1
     }
   ],
 

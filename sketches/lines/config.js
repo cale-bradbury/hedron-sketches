@@ -13,65 +13,65 @@ module.exports = {
       key: 'rotX', // needs to be unique
       title: 'Rotation X', // should be human
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'rotY',
       title: 'Rotation  Y',
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'rotZ',
       title: 'Rotation  Z',
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'scale',
       title: 'Scale',
       defaultValue: 0.5,
-			min: .00001,
-			max:	1000
+			defaultMin: .00001,
+			defaultMax:	1000
     },
     {
       key: 'shapeCount',
       defaultValue: 0.5,
-			min: 1,
-			max: 10
+			defaultMin: 1,
+			defaultMax: 10
     },
     {
       key: 'pointCount',
       defaultValue: 0.5,
-			min: 1,
-			max: 50
+			defaultMin: 1,
+			defaultMax: 50
     },
     {
       key: 'repeat',
       defaultValue: 0,
-			min: 1,
-			max: 64
+			defaultMin: 1,
+			defaultMax: 64
     },
     {
       key: 'smoothing',
       defaultValue: 0,
-			min: 0.001,
-			max: .1
+			defaultMin: 0.001,
+			defaultMax: .1
     },
     {
       key: 'animStep',
       defaultValue: 0,
-			min: 0,
-			max: .25
+			defaultMin: 0,
+			defaultMax: .25
     },
     {
       key: 'fov',
       defaultValue: .5,
-			min: 0,
-			max: 180
+			defaultMin: 0,
+			defaultMax: 180
     },
 		{
       key: 'colorH',

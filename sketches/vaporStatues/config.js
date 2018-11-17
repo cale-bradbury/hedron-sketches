@@ -13,47 +13,47 @@ module.exports = {
       key: 'rotX', // needs to be unique
       title: 'Rotation X', // should be human
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'rotY',
       title: 'Rotation  Y',
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'rotZ',
       title: 'Rotation  Z',
       defaultValue: 0,
-			min:0,
-			max:6.2831853
+			defaultMin:0,
+			defaultMax:6.2831853
     },
     {
       key: 'posX',
       defaultValue: .5,
-			min: -1000,
-			max: 1000
+			defaultMin: -1000,
+			defaultMax: 1000
     },
     {
       key: 'posY',
       defaultValue: .5,
-			min: -1000,
-			max: 1000
+			defaultMin: -1000,
+			defaultMax: 1000
     },
     {
       key: 'posZ',
       defaultValue: .5,
-			min: -1000,
-			max: 1000
+			defaultMin: -1000,
+			defaultMax: 1000
     },
     {
       key: 'scale',
       title: 'Scale',
       defaultValue: 0.5,
-			min: .00001,
-			max:	1000
+			defaultMin: .00001,
+			defaultMax:	1000
     },
     {
       key: 'pScale',
@@ -78,15 +78,15 @@ module.exports = {
     {
       key: 'normal',
       defaultValue: 0,
-			min: 0,
-			max: 1,
+			defaultMin: 0,
+			defaultMax: 1,
       hidden: true
     },
     {
       key: 'wireframe',
       defaultValue: 0,
-			min: 0,
-			max: 1,
+			defaultMin: 0,
+			defaultMax: 1,
       hidden: true
     },
     {

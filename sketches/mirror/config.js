@@ -12,21 +12,21 @@ module.exports = {
     {
       key: 'scale', // needs to be unique
       defaultValue: 0, // should be human
-      min: 1,
-      max: 5
+      defaultMin: 1,
+      defaultMax: 5
     },
     {
       key: 'x', // needs to be unique
       defaultValue: 0, // should be human
-      min:0,
-      max:2,
+      defaultMin:0,
+      defaultMax:2,
       hidden:true
     },
     {
       key: 'y', // needs to be unique
       defaultValue: 0, // should be human
-      min:0,
-      max:2,
+      defaultMin:0,
+      defaultMax:2,
       hidden:true
     },
   ],
