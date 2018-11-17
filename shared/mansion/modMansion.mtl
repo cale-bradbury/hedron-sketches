@@ -1,0 +1,57 @@
+# Blender MTL File: 'texturedMesh.obj'
+# Material Count: 5
+
+newmtl TextureAtlas_0
+Ns 0.000000
+Ka 0.600000 0.600000 0.600000
+Kd 0.600000 0.600000 0.600000
+Ks 0.000000 0.000000 0.000000
+Ke 0.600000 0.600000 0.600000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\caleb\Desktop\Meshroom test\MeshroomCache\Texturing\eb5e9a960fc0120735d5a01d6d4b4e0166d42b2f\texture_0.png
+
+newmtl TextureAtlas_1
+Ns 0.000000
+Ka 0.600000 0.600000 0.600000
+Kd 0.600000 0.600000 0.600000
+Ks 0.000000 0.000000 0.000000
+Ke 0.600000 0.600000 0.600000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\caleb\Desktop\Meshroom test\MeshroomCache\Texturing\eb5e9a960fc0120735d5a01d6d4b4e0166d42b2f\texture_1.png
+
+newmtl TextureAtlas_2
+Ns 0.000000
+Ka 0.600000 0.600000 0.600000
+Kd 0.600000 0.600000 0.600000
+Ks 0.000000 0.000000 0.000000
+Ke 0.600000 0.600000 0.600000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\caleb\Desktop\Meshroom test\MeshroomCache\Texturing\eb5e9a960fc0120735d5a01d6d4b4e0166d42b2f\texture_2.png
+
+newmtl TextureAtlas_3
+Ns 0.000000
+Ka 0.600000 0.600000 0.600000
+Kd 0.600000 0.600000 0.600000
+Ks 0.000000 0.000000 0.000000
+Ke 0.600000 0.600000 0.600000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\caleb\Desktop\Meshroom test\MeshroomCache\Texturing\eb5e9a960fc0120735d5a01d6d4b4e0166d42b2f\texture_3.png
+
+newmtl TextureAtlas_4
+Ns 0.000000
+Ka 0.600000 0.600000 0.600000
+Kd 0.600000 0.600000 0.600000
+Ks 0.000000 0.000000 0.000000
+Ke 0.600000 0.600000 0.600000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd C:\Users\caleb\Desktop\Meshroom test\MeshroomCache\Texturing\eb5e9a960fc0120735d5a01d6d4b4e0166d42b2f\texture_4.png
