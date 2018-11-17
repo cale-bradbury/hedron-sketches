@@ -95,7 +95,7 @@ void main(){
    vec2 u =local;
    vec3 new = texture2D(tex,u).rgb;
     u-=center.xy;
-    u.y/= hsb.w;
+    u.x *= hsb.w;
     float d = length(u);
     float a = atan(u.x,u.y);
     float f = abs((a/3.1416))+center.w;
