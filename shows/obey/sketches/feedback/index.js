@@ -1,5 +1,6 @@
 const THREE = require('three'),
   EffectComposer = require('three-effectcomposer')(THREE)
+const SavePass = require('../../../../shared/savepass')(THREE,EffectComposer)
 const glsl = require('glslify')
 const feedbackFrag = glsl.file('./feedbacker.glsl')
 
@@ -26,7 +27,7 @@ class Feedback {
     this.renderer = scene.renderer;
     this.scene = scene;
 
-    this.save = new EffectComposer.SavePass();
+    this.save = new SavePass();
 
     this.shift = new EffectComposer.ShaderPass({
       uniforms: {

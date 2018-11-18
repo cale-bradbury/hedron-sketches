@@ -14,7 +14,7 @@ class BigO {
     this.group.scale.set(1000, 1000, 1000);
     this.root.add(this.group)
     this.names = []
-    this.texture = new THREE.TextureLoader().load(project.project.filePath.substr(0, project.project.filePath.lastIndexOf('\\')) + "\\img\\o2.png");
+    this.texture = new THREE.TextureLoader().load(__dirname+"/../../img/o2.png");
     this.geometry = new THREE.PlaneGeometry(1, 1);
     var material = new THREE.MeshBasicMaterial({
       color: new THREE.Color("#ffffff"),
