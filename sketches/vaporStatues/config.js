@@ -57,7 +57,9 @@ module.exports = {
     },
     {
       key: 'pScale',
-      defaultValue: 0
+      defaultValue: 0,
+			defaultMin: .0001,
+			defaultMax: 1
     },
     {
       key: 'pAlpha',
@@ -91,6 +93,7 @@ module.exports = {
     },
     {
       key:'selected',
+			defaultValue:0,
       hidden:true
     }
     

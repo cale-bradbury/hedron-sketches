@@ -8,7 +8,7 @@ class TextBasic {
     this.group = new THREE.Group()
     this.root.add(this.group)
    
-    this.text = params.text;
+    this.text = params.text != undefined ? params.text : "text";
     
     this.font = new THREE.Font(fontJson);
     this.geometry = this.getGeometry(params.text, params);
@@ -54,7 +54,7 @@ class TextBasic {
 
   update(params, time, delta, allParams) {
 		
-		if(this.text!=params.text){
+		if(this.text!=params.text && params.text!=undefined){
       this.setText(params.text, params);
     }
 		
