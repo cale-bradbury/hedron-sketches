@@ -3,7 +3,7 @@ const fontJson = require('../../fonts/droid/droid_sans_regular.typeface.json')
 
 class Text {
 
-  constructor(scene, meta, params) {
+  constructor(scene, params) {
 
     /** HEDRON TIP **
       Must define a "root" property as a THREE.Group or THREE.Object3D
@@ -15,7 +15,7 @@ class Text {
     this.root.add(this.group)
     this.names = []
     this.text = params.text;
-    
+
     this.font = new THREE.Font(fontJson);
     this.geometry = new THREE.TextGeometry(this.text, {
       size: 1,
@@ -36,9 +36,9 @@ class Text {
   invertFirst() {
     this.invert = !this.invert;
   }
-  
-  randomize(){
-    return{
+
+  randomize() {
+    return {
       rotX: Math.random(),
       rotY: Math.random(),
       ampX: Math.random(),
@@ -51,10 +51,10 @@ class Text {
       colorPhase: Math.random()
     }
   }
-  
-  toggleText(){
+
+  toggleText() {
     this.textIndex++;
-    this.textIndex%= this.text.length
+    this.textIndex %= this.text.length
     this.geometry = new THREE.TextGeometry(this.text[this.textIndex], {
       size: 1,
       height: 1,
@@ -67,14 +67,14 @@ class Text {
       this.names[i].geometry = this.geometry;
     }
   }
-  
-  setText(text){
+
+  setText(text) {
     this.text = text;
     let a = text.split("\\n");
     console.log(a);
     console.log(text);
     this.geometry = new THREE.Geometry();
-    for(let i = 0; i<a.length; i++){
+    for (let i = 0; i < a.length; i++) {
       let geo = new THREE.TextGeometry(a[i], {
         size: 1,
         height: 1,
@@ -83,7 +83,7 @@ class Text {
         weight: 'normal'
       })
       geo.center();
-      this.geometry.merge(geo, new THREE.Matrix4().makeTranslation(0, -i*1.2, 0) );
+      this.geometry.merge(geo, new THREE.Matrix4().makeTranslation(0, -i * 1.2, 0));
     }
     this.geometry.center()
     for (var i = 0; i < this.names.length; i++) {
@@ -97,8 +97,8 @@ class Text {
     var pi = 3.14159;
     var tau = 6.28;
     time = time / 60;
-    
-    if(this.text!=params.text){
+
+    if (this.text != params.text) {
       this.setText(params.text);
     }
 

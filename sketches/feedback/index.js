@@ -1,12 +1,12 @@
 const THREE = require('three'),
   EffectComposer = require('three-effectcomposer')(THREE)
-const SavePass = require('../../shared/savepass')(THREE,EffectComposer)
+const SavePass = require('../../shared/savepass')(THREE, EffectComposer)
 const glsl = require('glslify')
 const feedbackFrag = glsl.file('./feedbacker.glsl')
 
 class Feedback {
 
-  constructor(scene, meta, params) {
+  constructor(scene, params) {
     var vert = "varying vec2 local;\n" +
       "void main(){\n" +
       "	local = uv;\n" +
@@ -107,7 +107,7 @@ class Feedback {
 
     }, "tex")
     this.added = false;
-    if(params.postToggled == 1)
+    if (params.postToggled == 1)
       this.togglePostSave()
     this.clearNextFrame = true;
   }
@@ -133,15 +133,15 @@ class Feedback {
     this.added = !this.added;
     if (!this.added) {
       this.scene.removePost(this.postSave);
-      return {postToggled: 0}
-    } 
+      return { postToggled: 0 }
+    }
     this.scene.addPost(this.postSave);
-    return {postToggled: 1}    
+    return { postToggled: 1 }
   }
-  
-  setBlend(i){
+
+  setBlend(i) {
     this.shift.uniforms.blend.value = i;
-    return {blend:i}
+    return { blend: i }
   }
   blendLerp() {
     return this.setBlend(0);
@@ -176,8 +176,8 @@ class Feedback {
 
   update(params, time, delta, allParams) {
     var size = this.scene.renderer.getSize();
-   // params.xShift /= size.width;
-   // params.yShift /= size.width;
+    // params.xShift /= size.width;
+    // params.yShift /= size.width;
     params.dShift /= 360 / 3.1415;
     params.aShift /= 360 / 3.1415
 
@@ -204,7 +204,7 @@ class Feedback {
       x: params.hue,
       y: params.saturation,
       z: params.brightness,
-      w: size.height/size.width
+      w: size.height / size.width
     }
     this.shift.uniforms.angle.value = {
       x: params.angleMin,
@@ -212,7 +212,7 @@ class Feedback {
       z: params.angleFreq,
       w: params.anglePhase
     }
-    
+
     this.shift.uniforms.spread.value = {
       x: params.micSpread,
       y: 0,
@@ -221,8 +221,8 @@ class Feedback {
     }
     //console.log(this.camera);
   }
-  
-  destructor(scene){
+
+  destructor(scene) {
     scene.removePost(this.shift);
     scene.removePost(this.save);
     scene.removePost(this.postSave);

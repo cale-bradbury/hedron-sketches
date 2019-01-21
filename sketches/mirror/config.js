@@ -18,16 +18,12 @@ module.exports = {
     {
       key: 'x', // needs to be unique
       defaultValue: 0, // should be human
-      defaultMin:0,
-      defaultMax:2,
-      hidden:true
+      hidden: true
     },
     {
       key: 'y', // needs to be unique
       defaultValue: 0, // should be human
-      defaultMin:0,
-      defaultMax:2,
-      hidden:true
+      hidden: true
     },
   ],
 

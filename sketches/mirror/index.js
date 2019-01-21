@@ -5,7 +5,7 @@ const frag = glsl.file('./mirror.glsl')
 
 class Mirror {
 
-  constructor(scene, meta, params) {
+  constructor(scene, params) {
     var vert = "varying vec2 local;\n" +
       "void main(){\n" +
       "	local = uv;\n" +
@@ -39,24 +39,24 @@ class Mirror {
     scene.addPost(this.mirror);
 
   }
-  
-  destructor(scene){
+
+  destructor(scene) {
     scene.removePost(this.mirror);
   }
 
 
   mirrorX() {
     this.mirror.uniforms.mirrorX.value = this.mirror.uniforms.mirrorX.value == 1 ? 2 : 1;
-    return {x:this.mirror.uniforms.mirrorX.value}
+    return { x: this.mirror.uniforms.mirrorX.value }
   }
   mirrorY() {
     this.mirror.uniforms.mirrorY.value = this.mirror.uniforms.mirrorY.value == 1 ? 2 : 1;
-    return {y:this.mirror.uniforms.mirrorY.value}
+    return { y: this.mirror.uniforms.mirrorY.value }
   }
   mirrorOff() {
     this.mirror.uniforms.mirrorX.value = 0;
     this.mirror.uniforms.mirrorY.value = 0;
-    return {x:0, y:0}
+    return { x: 0, y: 0 }
   }
 
   update(params, time, delta, allParams) {

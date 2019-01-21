@@ -1,12 +1,12 @@
 const THREE = require('three'),
   EffectComposer = require('three-effectcomposer')(THREE)
-const SavePass = require('../../shared/savepass')(THREE,EffectComposer)
+const SavePass = require('../../shared/savepass')(THREE, EffectComposer)
 const glsl = require('glslify')
 const feedbackFrag = glsl.file('./feedglitch.glsl')
 
 class FeedGlitch {
 
-  constructor(scene, params, meta) {
+  constructor(scene, params) {
     var vert = "varying vec2 local;\n" +
       "void main(){\n" +
       "	local = uv;\n" +
@@ -93,7 +93,7 @@ class FeedGlitch {
 
     }, "tex")
     this.added = false;
-    if(params.postToggled == 1)
+    if (params.postToggled == 1)
       this.togglePostSave()
     this.clearNextFrame = true;
     this.blendNextFrame = params.blend;
@@ -122,14 +122,14 @@ class FeedGlitch {
     this.added = !this.added;
     if (!this.added) {
       this.scene.removePost(this.postSave);
-      return {postToggled: 0}
-    } 
+      return { postToggled: 0 }
+    }
     this.scene.addPost(this.postSave);
-    return {postToggled: 1}    
+    return { postToggled: 1 }
   }
-  setBlend(i){
+  setBlend(i) {
     this.shift.uniforms.blend.value = i;
-    return {blend:i}
+    return { blend: i }
   }
   blendLerp() {
     return this.setBlend(0);
@@ -165,7 +165,7 @@ class FeedGlitch {
   update(params, time, delta, allParams) {
     var size = this.scene.renderer.getSize();
     if (this.clearNextFrame) {
-      if(this.blendNextFrame!=-1){
+      if (this.blendNextFrame != -1) {
         this.setBlend(this.blendNextFrame)
         this.blendNextFrame = -1
       }
@@ -175,18 +175,18 @@ class FeedGlitch {
     this.shift.uniforms.mic.value = this.scene.analyzer.texture;
     this.shift.uniforms.fade.value = params.fade;
     this.shift.uniforms.shift.value = {
-      x: params.xMin/size.width,
-      y: params.yMin/size.height,
-      z: params.xMax/size.width,
-      w: params.yMax/size.height
-    }    
+      x: params.xMin / size.width,
+      y: params.yMin / size.height,
+      z: params.xMax / size.width,
+      w: params.yMax / size.height
+    }
     this.shift.uniforms.hsb.value = {
       x: params.hue,
       y: params.saturation,
       z: params.brightness,
       w: params.highCut
     }
-    
+
     this.shift.uniforms.center.value = {
       x: params.xCenter,
       y: params.yCenter,
@@ -195,8 +195,8 @@ class FeedGlitch {
     }
     //console.log(this.camera);
   }
-  
-  destructor(scene){
+
+  destructor(scene) {
     scene.removePost(this.shift);
     scene.removePost(this.save);
     scene.removePost(this.postSave);
